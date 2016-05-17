@@ -40,4 +40,8 @@ echo "Brew Upgrade | bash=brew param1=upgrade terminal=true refresh="
 echo "Brew Cleanup | bash=brew param1=cleanup terminal=true refresh="
 echo "Brew Cask Cleanup | bash=brew param1=cask param2=cleanup terminal=true refresh="
 echo "Refresh | refresh="
+else
+echo "↑$brewcasknum"
+echo "---"
+echo "Refresh | refresh="
 fi
