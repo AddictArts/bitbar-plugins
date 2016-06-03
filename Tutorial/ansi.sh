@@ -26,5 +26,29 @@ for FGs in '    m' '   1m' '  30m' '1;30m' '  31m' '1;31m' '  32m' \
   echo " | ansi=true font=courier trim=false";
 done
 echo "---"
+for clbg in {40..47} {100..107} 49 ; do
+	#Foreground
+	for clfg in {30..37} {90..97} 39 ; do
+		#Formatting
+		for attr in 0 1 2 4 5 7 ; do
+			#Print the result
+			echo -en "\033[${attr};${clbg};${clfg}m ^[${attr};${clbg};${clfg}m \033[0m"
+		done
+		echo " | ansi=true font=courier trim=false" #Newline
+	done
+done
+echo "---"
+for fgbg in 38 48 ; do #Foreground/Background
+	for color in {0..256} ; do #Colors
+		#Display the color
+		echo -en "\033[${fgbg};5;${color}m ${color}\t\033[0m"
+		#Display 10 colors per lines
+		if [ $((($color + 1) % 10)) == 0 ] ; then
+			echo " | ansi=true font=courier trim=false" #New line
+		fi
+	done
+	echo " | ansi=true font=courier trim=false" #New line
+done
+echo "---"
 echo "Open color codes in browser… | href=http://misc.flogisoft.com/bash/tip_colors_and_formatting#colors"
 echo "Refresh | refresh=true"
